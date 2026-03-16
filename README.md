@@ -1,6 +1,6 @@
 # pinterest-ads-cli
 
-A Pinterest Ads CLI designed for AI agents. Wraps the official Pinterest API (v5) with simple, agent-friendly commands.
+Give AI agents direct access to Pinterest Ads data. One command to query campaigns, audiences, catalogs, trends, and pull performance analytics -- no SDK, no docs to read, no tokens wasted on boilerplate.
 
 **Works with:** OpenClaw, Claude Code, Cursor, Codex, and any agent that can run shell commands.
 
@@ -18,7 +18,7 @@ npx pinterest-ads-cli --help
 
 ## How it works
 
-This CLI is a thin wrapper around the official [Pinterest REST API v5](https://developers.pinterest.com/docs/api/v5/). It uses OAuth2 Bearer token authentication and returns all API responses as JSON. No transformation or aggregation.
+Built on the official [Pinterest REST API v5](https://developers.pinterest.com/docs/api/v5/). Handles OAuth2 Bearer token authentication. Every command outputs structured JSON to stdout, ready for agents to parse without extra processing.
 
 Core endpoints covered:
 

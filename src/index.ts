@@ -1,3 +1,47 @@
 #!/usr/bin/env node
-console.error(JSON.stringify({ error: "pinterest-ads-cli is under development. See https://github.com/Bin-Huang/pinterest-ads-cli" }));
-process.exit(1);
+import { Command } from "commander";
+import { registerAccountCommands } from "./commands/accounts.js";
+import { registerCampaignCommands } from "./commands/campaigns.js";
+import { registerAdgroupCommands } from "./commands/adgroups.js";
+import { registerAdCommands } from "./commands/ads.js";
+import { registerAnalyticsCommands } from "./commands/analytics.js";
+
+const program = new Command();
+
+program
+  .name("pinterest-ads-cli")
+  .description("Pinterest Ads CLI for AI agents")
+  .version("0.1.0")
+  .option("--format <format>", "Output format", "json")
+  .option("--credentials <path>", "Path to credentials JSON file")
+  .addHelpText(
+    "after",
+    "\nDocs: https://github.com/Bin-Huang/pinterest-ads-cli"
+  );
+
+program.configureOutput({
+  writeErr: () => {},
+});
+
+program.hook("preAction", () => {
+  const format = program.opts().format;
+  if (format !== "json" && format !== "compact") {
+    process.stderr.write(
+      JSON.stringify({ error: "Format must be 'json' or 'compact'." }) + "\n"
+    );
+    process.exit(1);
+  }
+});
+
+registerAccountCommands(program);
+registerCampaignCommands(program);
+registerAdgroupCommands(program);
+registerAdCommands(program);
+registerAnalyticsCommands(program);
+
+if (process.argv.length <= 2) {
+  program.outputHelp();
+  process.exit(0);
+}
+
+program.parse();

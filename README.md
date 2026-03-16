@@ -23,10 +23,13 @@ This CLI is a thin wrapper around the official [Pinterest REST API v5](https://d
 Core endpoints covered:
 
 - **[Ad Accounts](https://developers.pinterest.com/docs/api/v5/#tag/ad_accounts)** -- list and inspect ad accounts
-- **[Campaigns](https://developers.pinterest.com/docs/api/v5/#tag/campaigns)** -- list campaigns under an account
-- **[Ad Groups](https://developers.pinterest.com/docs/api/v5/#tag/ad_groups)** -- list ad groups under an account
-- **[Ads](https://developers.pinterest.com/docs/api/v5/#tag/ads)** -- list ads under an account
-- **Analytics** -- account-level and campaign-level performance metrics
+- **[Campaigns](https://developers.pinterest.com/docs/api/v5/#tag/campaigns)** -- list campaigns
+- **[Ad Groups](https://developers.pinterest.com/docs/api/v5/#tag/ad_groups)** -- list ad groups
+- **[Ads](https://developers.pinterest.com/docs/api/v5/#tag/ads)** -- list ads
+- **[Keywords](https://developers.pinterest.com/docs/api/v5/#tag/keywords)** -- list targeting keywords
+- **[Audiences](https://developers.pinterest.com/docs/api/v5/#tag/audiences)** -- list audiences and customer lists
+- **[Conversion Tags](https://developers.pinterest.com/docs/api/v5/#tag/conversion_tags)** -- list conversion tracking tags
+- **Analytics** -- account, campaign, ad group, and ad level performance metrics
 
 ## Setup
 
@@ -88,6 +91,10 @@ pinterest-ads-cli accounts
 pinterest-ads-cli accounts --page-size 50
 ```
 
+Options:
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--bookmark <cursor>` -- pagination cursor
+
 ### account
 
 Get details of a specific ad account.
@@ -148,6 +155,62 @@ Options:
 - `--order <order>` -- sort order
 - `--bookmark <cursor>` -- pagination cursor
 
+### keywords
+
+List keywords for an ad account.
+
+```bash
+pinterest-ads-cli keywords 123456789
+pinterest-ads-cli keywords 123456789 --ad-group-id adgroup_1
+```
+
+Options:
+- `--ad-group-id <id>` -- filter by ad group ID
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--bookmark <cursor>` -- pagination cursor
+
+### audiences
+
+List audiences for an ad account.
+
+```bash
+pinterest-ads-cli audiences 123456789
+```
+
+Options:
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--order <order>` -- sort order: ASCENDING or DESCENDING
+- `--bookmark <cursor>` -- pagination cursor
+
+### customer-lists
+
+List customer lists for an ad account.
+
+```bash
+pinterest-ads-cli customer-lists 123456789
+```
+
+Options:
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--order <order>` -- sort order: ASCENDING or DESCENDING
+- `--bookmark <cursor>` -- pagination cursor
+
+### conversion-tags
+
+List conversion tags for an ad account.
+
+```bash
+pinterest-ads-cli conversion-tags 123456789
+```
+
+### conversion-tag
+
+Get a specific conversion tag.
+
+```bash
+pinterest-ads-cli conversion-tag 123456789 tag_abc
+```
+
 ### analytics
 
 Get ad account-level analytics.
@@ -163,7 +226,7 @@ pinterest-ads-cli analytics 123456789 \
 Options:
 - `--start-date <date>` -- start date, YYYY-MM-DD (required)
 - `--end-date <date>` -- end date, YYYY-MM-DD (required)
-- `--columns <cols>` -- metrics, comma-separated (required)
+- `--columns <cols>` -- metrics, comma-separated (required). Common: SPEND_IN_MICRO_DOLLAR, IMPRESSION_1, CLICKTHROUGH_1, CPC_IN_MICRO_DOLLAR, ECPM_IN_MICRO_DOLLAR, CTR, TOTAL_CONVERSIONS
 - `--granularity <gran>` -- TOTAL, DAY, HOUR, WEEK, MONTH (default DAY)
 - `--click-window-days <n>` -- click attribution window (0, 1, 7, 14, 30, 60)
 - `--view-window-days <n>` -- view attribution window (0, 1, 7, 14, 30, 60)
@@ -179,6 +242,51 @@ pinterest-ads-cli campaign-analytics 123456789 \
   --end-date 2026-03-15 \
   --columns SPEND_IN_MICRO_DOLLAR,IMPRESSION_1,CLICKTHROUGH_1
 ```
+
+Options:
+- `--campaign-ids <ids>` -- campaign IDs, comma-separated (required)
+- `--start-date <date>` -- start date (required)
+- `--end-date <date>` -- end date (required)
+- `--columns <cols>` -- metrics (required)
+- `--granularity <gran>` -- TOTAL, DAY, HOUR, WEEK, MONTH (default DAY)
+
+### adgroup-analytics
+
+Get ad group-level analytics.
+
+```bash
+pinterest-ads-cli adgroup-analytics 123456789 \
+  --ad-group-ids adgroup_1 \
+  --start-date 2026-03-01 \
+  --end-date 2026-03-15 \
+  --columns SPEND_IN_MICRO_DOLLAR,IMPRESSION_1
+```
+
+Options:
+- `--ad-group-ids <ids>` -- ad group IDs, comma-separated (required)
+- `--start-date <date>` -- start date (required)
+- `--end-date <date>` -- end date (required)
+- `--columns <cols>` -- metrics (required)
+- `--granularity <gran>` -- TOTAL, DAY, HOUR, WEEK, MONTH (default DAY)
+
+### ad-analytics
+
+Get ad-level analytics.
+
+```bash
+pinterest-ads-cli ad-analytics 123456789 \
+  --ad-ids ad_1 \
+  --start-date 2026-03-01 \
+  --end-date 2026-03-15 \
+  --columns SPEND_IN_MICRO_DOLLAR,IMPRESSION_1
+```
+
+Options:
+- `--ad-ids <ids>` -- ad IDs, comma-separated (required)
+- `--start-date <date>` -- start date (required)
+- `--end-date <date>` -- end date (required)
+- `--columns <cols>` -- metrics (required)
+- `--granularity <gran>` -- TOTAL, DAY, HOUR, WEEK, MONTH (default DAY)
 
 ## Error output
 

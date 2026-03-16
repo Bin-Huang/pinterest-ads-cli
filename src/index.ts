@@ -4,6 +4,9 @@ import { registerAccountCommands } from "./commands/accounts.js";
 import { registerCampaignCommands } from "./commands/campaigns.js";
 import { registerAdgroupCommands } from "./commands/adgroups.js";
 import { registerAdCommands } from "./commands/ads.js";
+import { registerKeywordCommands } from "./commands/keywords.js";
+import { registerAudienceCommands } from "./commands/audiences.js";
+import { registerConversionTagCommands } from "./commands/conversion-tags.js";
 import { registerAnalyticsCommands } from "./commands/analytics.js";
 
 const program = new Command();
@@ -11,7 +14,7 @@ const program = new Command();
 program
   .name("pinterest-ads-cli")
   .description("Pinterest Ads CLI for AI agents")
-  .version("0.1.0")
+  .version("1.0.0")
   .option("--format <format>", "Output format", "json")
   .option("--credentials <path>", "Path to credentials JSON file")
   .addHelpText(
@@ -37,6 +40,9 @@ registerAccountCommands(program);
 registerCampaignCommands(program);
 registerAdgroupCommands(program);
 registerAdCommands(program);
+registerKeywordCommands(program);
+registerAudienceCommands(program);
+registerConversionTagCommands(program);
 registerAnalyticsCommands(program);
 
 if (process.argv.length <= 2) {

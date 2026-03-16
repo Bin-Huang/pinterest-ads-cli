@@ -200,7 +200,7 @@ Errors are written to stderr as JSON with an `error` field and a non-zero exit c
 - [tiktok-ads-cli](https://github.com/Bin-Huang/tiktok-ads-cli) -- TikTok Ads CLI for AI agents
 - [x-ads-cli](https://github.com/Bin-Huang/x-ads-cli) -- X Ads CLI for AI agents
 - [reddit-ads-cli](https://github.com/Bin-Huang/reddit-ads-cli) -- Reddit Ads CLI for AI agents
-- [apple-search-ads-cli](https://github.com/Bin-Huang/apple-search-ads-cli) -- Apple Search Ads CLI for AI agents
+- [apple-ads-cli](https://github.com/Bin-Huang/apple-ads-cli) -- Apple Ads CLI for AI agents
 
 ## License
 

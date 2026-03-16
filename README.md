@@ -29,6 +29,10 @@ Core endpoints covered:
 - **[Keywords](https://developers.pinterest.com/docs/api/v5/#tag/keywords)** -- list targeting keywords
 - **[Audiences](https://developers.pinterest.com/docs/api/v5/#tag/audiences)** -- list audiences and customer lists
 - **[Conversion Tags](https://developers.pinterest.com/docs/api/v5/#tag/conversion_tags)** -- list conversion tracking tags
+- **[Billing](https://developers.pinterest.com/docs/api/v5/#tag/billing)** -- billing profiles and order lines
+- **[Lead Forms](https://developers.pinterest.com/docs/api/v5/#tag/lead_forms)** -- lead generation forms
+- **[Catalogs](https://developers.pinterest.com/docs/api/v5/#tag/catalogs)** -- product catalogs and feeds (Pinterest Shopping)
+- **[Trends](https://developers.pinterest.com/docs/api/v5/#tag/trends)** -- trending search terms by region
 - **Analytics** -- account, campaign, ad group, and ad level performance metrics
 
 ## Setup
@@ -210,6 +214,116 @@ Get a specific conversion tag.
 ```bash
 pinterest-ads-cli conversion-tag 123456789 tag_abc
 ```
+
+### billing-profiles
+
+List billing profiles for an ad account.
+
+```bash
+pinterest-ads-cli billing-profiles 123456789
+pinterest-ads-cli billing-profiles 123456789 --is-active
+```
+
+Options:
+- `--is-active` -- only return active profiles
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--bookmark <cursor>` -- pagination cursor
+
+### order-lines
+
+List order lines for an ad account.
+
+```bash
+pinterest-ads-cli order-lines 123456789
+```
+
+Options:
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--order <order>` -- sort order: ASCENDING or DESCENDING
+- `--bookmark <cursor>` -- pagination cursor
+
+### order-line
+
+Get a specific order line.
+
+```bash
+pinterest-ads-cli order-line 123456789 orderline_abc
+```
+
+### lead-forms
+
+List lead generation forms for an ad account.
+
+```bash
+pinterest-ads-cli lead-forms 123456789
+```
+
+Options:
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--order <order>` -- sort order: ASCENDING or DESCENDING
+- `--bookmark <cursor>` -- pagination cursor
+
+### lead-form
+
+Get a specific lead form.
+
+```bash
+pinterest-ads-cli lead-form 123456789 leadform_abc
+```
+
+### catalogs
+
+List catalogs.
+
+```bash
+pinterest-ads-cli catalogs
+```
+
+Options:
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--bookmark <cursor>` -- pagination cursor
+
+### feeds
+
+List catalog feeds.
+
+```bash
+pinterest-ads-cli feeds
+```
+
+Options:
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--bookmark <cursor>` -- pagination cursor
+
+### product-groups
+
+List product groups for an ad account.
+
+```bash
+pinterest-ads-cli product-groups 123456789
+pinterest-ads-cli product-groups 123456789 --feed-id feed_abc
+```
+
+Options:
+- `--feed-id <id>` -- filter by feed ID
+- `--page-size <n>` -- results per page (default 25, max 250)
+- `--bookmark <cursor>` -- pagination cursor
+
+### trends
+
+Get trending search terms for a region.
+
+```bash
+pinterest-ads-cli trends US --trend-type growing
+pinterest-ads-cli trends US --trend-type monthly --interests fashion --limit 20
+```
+
+Options:
+- `--trend-type <type>` -- trend type: growing, monthly, yearly, seasonal (required)
+- `--interests <interests>` -- filter by interests (comma-separated)
+- `--genders <genders>` -- filter by genders (comma-separated)
+- `--ages <ages>` -- filter by age groups (comma-separated)
+- `--limit <n>` -- number of results (default 50)
 
 ### analytics
 

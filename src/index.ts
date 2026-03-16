@@ -7,6 +7,10 @@ import { registerAdCommands } from "./commands/ads.js";
 import { registerKeywordCommands } from "./commands/keywords.js";
 import { registerAudienceCommands } from "./commands/audiences.js";
 import { registerConversionTagCommands } from "./commands/conversion-tags.js";
+import { registerBillingCommands } from "./commands/billing.js";
+import { registerLeadFormCommands } from "./commands/lead-forms.js";
+import { registerCatalogCommands } from "./commands/catalogs.js";
+import { registerTrendCommands } from "./commands/trends.js";
 import { registerAnalyticsCommands } from "./commands/analytics.js";
 
 const program = new Command();
@@ -43,6 +47,10 @@ registerAdCommands(program);
 registerKeywordCommands(program);
 registerAudienceCommands(program);
 registerConversionTagCommands(program);
+registerBillingCommands(program);
+registerLeadFormCommands(program);
+registerCatalogCommands(program);
+registerTrendCommands(program);
 registerAnalyticsCommands(program);
 
 if (process.argv.length <= 2) {

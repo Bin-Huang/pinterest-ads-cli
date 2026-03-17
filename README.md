@@ -47,8 +47,6 @@ Core endpoints covered:
 
 Use the Pinterest OAuth2 flow to get an access token with the `ads:read` scope. See [Pinterest OAuth docs](https://developers.pinterest.com/docs/getting-started/authentication/).
 
-For testing, you can generate a token from the [Pinterest API Explorer](https://developers.pinterest.com/tools/api-explorer/).
-
 ### Step 3: Place the credentials file
 
 Choose one of these options:

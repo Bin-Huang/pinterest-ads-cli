@@ -297,15 +297,13 @@ Options:
 
 ### product-groups
 
-List product groups for an ad account.
+List catalog product groups.
 
 ```bash
-pinterest-ads-cli product-groups 123456789
-pinterest-ads-cli product-groups 123456789 --feed-id feed_abc
+pinterest-ads-cli product-groups
 ```
 
 Options:
-- `--feed-id <id>` -- filter by feed ID
 - `--page-size <n>` -- results per page (default 25, max 250)
 - `--bookmark <cursor>` -- pagination cursor
 

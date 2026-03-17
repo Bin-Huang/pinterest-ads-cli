@@ -15,15 +15,14 @@ export function registerTrendCommands(program: Command): void {
     .action(async (region: string, opts) => {
       try {
         const creds = loadCredentials(program.opts().credentials);
+        const trendType = opts.trendType;
         const params: Record<string, string> = {
-          region,
-          trend_type: opts.trendType,
           limit: opts.limit,
         };
         if (opts.interests) params.interests = opts.interests;
         if (opts.genders) params.genders = opts.genders;
         if (opts.ages) params.ages = opts.ages;
-        const data = await callApi("/trends/keywords", { creds, params });
+        const data = await callApi(`/trends/keywords/${region}/top/${trendType}`, { creds, params });
         output(data, program.opts().format);
       } catch (err) {
         fatal((err as Error).message);

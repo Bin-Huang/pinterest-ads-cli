@@ -43,21 +43,19 @@ export function registerCatalogCommands(program: Command): void {
     });
 
   program
-    .command("product-groups <ad-account-id>")
-    .description("List product groups for an ad account")
-    .option("--feed-id <id>", "Filter by feed ID")
+    .command("product-groups")
+    .description("List catalog product groups")
     .option("--page-size <n>", "Results per page (default 25, max 250)", "25")
     .option("--bookmark <cursor>", "Pagination cursor")
-    .action(async (adAccountId: string, opts) => {
+    .action(async (opts) => {
       try {
         const creds = loadCredentials(program.opts().credentials);
         const params: Record<string, string> = {
           page_size: opts.pageSize,
         };
-        if (opts.feedId) params.feed_id = opts.feedId;
         if (opts.bookmark) params.bookmark = opts.bookmark;
         const data = await callApi(
-          `/ad_accounts/${adAccountId}/product_groups/analytics`,
+          `/catalogs/product_groups`,
           { creds, params }
         );
         output(data, program.opts().format);

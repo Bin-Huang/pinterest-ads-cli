@@ -1,6 +1,6 @@
 # pinterest-ads-cli
 
-Give AI agents direct access to Pinterest Ads data. One command to query campaigns, audiences, catalogs, trends, and pull performance analytics -- no SDK, no docs to read, no tokens wasted on boilerplate.
+Pinterest Ads CLI for AI agents (and humans). Analyze campaign performance, browse product catalogs, discover regional search trends, pull analytics with attribution windows, and more.
 
 **Works with:** OpenClaw, Claude Code, Cursor, Codex, and any agent that can run shell commands.
 

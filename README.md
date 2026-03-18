@@ -10,11 +10,7 @@ Pinterest Ads CLI for AI agents (and humans). Analyze campaign performance, brow
 npm install -g pinterest-ads-cli
 ```
 
-Or run directly with npx:
-
-```bash
-npx pinterest-ads-cli --help
-```
+Or run directly: `npx pinterest-ads-cli --help`
 
 ## How it works
 

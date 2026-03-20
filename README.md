@@ -8,7 +8,7 @@ Pinterest Ads CLI for AI agents (and humans). Analyze campaign performance, brow
 
 Tell your AI agent (e.g. OpenClaw):
 
-> Install the CLI and skills from https://github.com/Bin-Huang/pinterest-ads-cli
+> Install this CLI and skills from https://github.com/Bin-Huang/pinterest-ads-cli
 
 Or install manually:
 

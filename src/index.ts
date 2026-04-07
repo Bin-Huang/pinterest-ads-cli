@@ -21,7 +21,7 @@ const program = new Command();
 
 program
   .name("pinterest-ads-cli")
-  .description("Pinterest Ads CLI for AI agents")
+  .description("Pinterest Ads CLI & Skills for AI agents")
   .version(version)
   .option("--format <format>", "Output format", "json")
   .option("--credentials <path>", "Path to credentials JSON file")

@@ -1,7 +1,7 @@
 {
   "name": "pinterest-ads-cli",
   "version": "1.0.4",
-  "description": "Pinterest Ads CLI for AI agents",
+  "description": "Pinterest Ads CLI & Skills for AI agents",
   "type": "module",
   "bin": {
     "pinterest-ads-cli": "dist/index.js"
